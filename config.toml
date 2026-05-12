@@ -1,0 +1,25 @@
+#Camera Driver Configuration
+[driver]
+cti_path = 'C:\Program Files\SVS-VISTEK GmbH\SVCam Kit\TLUsb\bin\sv_u3v_tl_x64.cti'
+
+#Region of interest settings
+[roi]
+offset_x = 0             # pixels from top left
+offset_y = 0             # pixels from top left
+width = 4096                # 4096 max pixels
+height = 3000               # 3000 max pixels
+
+[camera]
+frame_rate = 23.0           # frames
+exposure_time = 20000.0     # in microseconds. min/max = [1000.0, 30000.0] 
+
+[capture]
+save_images = true          # false, if you only want to display a gui, true if you want to record images
+hours = 0
+minutes = 0
+seconds = 10
+max_frames = 3000             # -1 if no max limit. Positive integer otherwise
+num_writers = 1     # ✅ multiprocessing writers
+
+[viewer]
+display_fps = 10
