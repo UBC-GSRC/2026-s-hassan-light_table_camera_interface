@@ -19,7 +19,7 @@ hours = 0
 minutes = 0
 seconds = 10
 max_frames = 3000             # -1 if no max limit. Positive integer otherwise
-num_writers = 1     # ✅ multiprocessing writers
+num_writers = 1     # multiprocessing writers
 
 [viewer]
 display_fps = 10

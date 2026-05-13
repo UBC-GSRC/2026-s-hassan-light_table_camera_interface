@@ -152,13 +152,13 @@ last_display = time.perf_counter()
 try:
     while running:
 
-        # ✅ TIMER ONLY ACTIVE DURING RECORDING
+        # TIMER ONLY ACTIVE DURING RECORDING
         if saving_enabled and record_start_time is not None:
             elapsed = time.perf_counter() - record_start_time
         else:
             elapsed = 0
 
-        # ✅ STOP CONDITIONS
+        # STOP CONDITIONS
         if SAVE_IMAGES and saving_enabled and MAX_DURATION_SEC > 0:
             if elapsed >= MAX_DURATION_SEC:
                 print("Time limit reached.")
@@ -182,7 +182,7 @@ try:
 
             count += 1
 
-            # ✅ ALWAYS CHECK KEYS
+            # ALWAYS CHECK KEYS
             key = cv2.waitKey(1) & 0xFF
 
             if key == ord('q'):
@@ -203,18 +203,18 @@ try:
                 saving_enabled = False
                 record_start_time = None
 
-            # ✅ RAW IMAGE
+            # RAW IMAGE
             component = buffer.payload.components[0]
             raw = component.data.reshape(component.height, component.width)
 
-            # ✅ DISPLAY IMAGE (copy)
+            # DISPLAY IMAGE (copy)
             display_img = raw.copy()
 
             now = time.perf_counter()
 
             if now - last_display > 0.03:
 
-                # ✅ OVERLAY
+                # OVERLAY
                 if saving_enabled:
                     blink = int(now * 2) % 2 == 0
                     if blink:
@@ -225,7 +225,7 @@ try:
                     cv2.putText(display_img, "LIVE", (20, 40),
                                 cv2.FONT_HERSHEY_SIMPLEX, 1.0, (200,), 2)
 
-                # ✅ INFO
+                # INFO
                 cv2.putText(display_img, f"Frames: {record_count}", (20, 80),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200,), 2)
 
@@ -236,7 +236,7 @@ try:
                 cv2.imshow("Camera", display_img)
                 last_display = now
 
-                # ✅ Window fix
+                # Window fix
                 try:
                     _, _, _, h = cv2.getWindowImageRect("Camera")
                     if h < 100:
@@ -244,7 +244,7 @@ try:
                 except:
                     pass
 
-            # ✅ SAVE RAW ONLY
+            # SAVE RAW ONLY
             if SAVE_IMAGES and saving_enabled:
                 if not img_queue.full():
                     
