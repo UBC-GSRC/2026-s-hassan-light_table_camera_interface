@@ -257,9 +257,6 @@ try:
                     img_queue.put((raw.copy(), filename))
                     record_count += 1
 
-            if count % 100 == 0:
-                print(f"Total frames: {count}")
-
 except KeyboardInterrupt:
     print("\nUser interrupted (outer).")
 
